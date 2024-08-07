@@ -11,6 +11,9 @@
 	"keywords": [],
 	"author": "",
 	"license": "MIT",
+	"dependencies": {
+		"sass": "^1.77.8"
+	},
 	"devDependencies": {
 		"@tsconfig/svelte": "^5.0.4",
 		"@types/node": "^16.11.6",

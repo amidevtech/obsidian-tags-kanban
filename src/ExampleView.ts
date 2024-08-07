@@ -1,8 +1,12 @@
 import { ItemView, WorkspaceLeaf } from "obsidian";
 
+import Component from "./Component.svelte";
+
 export const VIEW_TYPE_EXAMPLE = "example-view";
 
 export class ExampleView extends ItemView {
+	component: Component;
+
 	constructor(leaf: WorkspaceLeaf) {
 		super(leaf);
 	}
@@ -16,12 +20,17 @@ export class ExampleView extends ItemView {
 	}
 
 	async onOpen() {
-		const container = this.containerEl.children[1];
-		container.empty();
-		container.createEl("h4", { text: "Example view" });
+		this.component = new Component({
+			target: this.contentEl,
+			props: {
+				variable: 6,
+				title: 'Tags Kanban tab'
+
+			}
+		});
 	}
 
 	async onClose() {
-		// Nothing to clean up.
+		this.component.$destroy();
 	}
 }
